@@ -33,8 +33,8 @@ public:
 };
 
 
-// This routine tests the Gauss-2 method on a simple integral
-/*int main(int argc, char* argv[]) {
+// This routine tests the Gauss-5 method on a simple integral
+int main(int argc, char* argv[]) {
     
     // limits of integration
     double a = -3.0;
@@ -75,6 +75,6 @@ public:
     }
     cout << "  ---------------------------------------------------\n";
     
-}*/
+}
 
 

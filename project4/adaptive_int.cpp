@@ -20,40 +20,34 @@ int adaptive_int(Fcn& f, const double a, const double b, const double rtol,
 {
     
     n=16;
-    Ntot=16;
-    double npk=n+8;
+    int npk=n+10;
+     Ntot=n+npk;
     R=composite_int(f, a, b, n);
     double Rnpk=composite_int(f, a, b, npk);
-    while (Ntot<=200) {
+    while (Ntot<=1000) {
     if(fabs(Rnpk-R)<rtol*fabs(Rnpk)+atol)
     {
         return 0;
     }
         else
         {
-            
-           if (rtol>=1e-4)
+            if (rtol>=1e-4)
             {
-                n+=8;
-            Ntot+=n;
+            n+=8;
             npk=n+4;
+                Ntot+=n+npk;
             }
            else if (rtol>=1e-8)
             {
                 n=n+24;
                 npk=n+4;
-                Ntot+=n;
-            }
-            else if(rtol>=1e-10)
-            {n=n+36;
-                npk=n+4;
-                Ntot+=n;
+                Ntot+=n+npk;
             }
             else
             {
-                n=n+64;
+                n=n+9;
                 npk=n+4;
-                Ntot+=n;
+                Ntot+=n+npk;
             }
             R=composite_int(f, a, b, n);
             Rnpk=composite_int(f, a, b, npk);

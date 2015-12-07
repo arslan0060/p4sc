@@ -33,7 +33,7 @@ public:
 };
 
 
-// This routine tests the Gauss-2 method on a simple integral
+// This routine tests the Gauss-5 method on a simple integral
 int main(int argc, char* argv[]) {
     
     // limits of integration
@@ -48,17 +48,18 @@ int main(int argc, char* argv[]) {
     // true integral value
     double Itrue = f.antiderivative(b) - f.antiderivative(a);
     printf("\n True Integral = %22.16e\n", Itrue);
-    double R=0.0;
-    int n=0;
-    int Ntot=0;
+    double R=0.0;//variable to store estimated integral
+    int n=0;//variable to store subintervals for success
+    int Ntot=0;//variable to store total intervals used
+    //vector of tolerances
     vector<double> rtol={1e-2,1e-4,1e-6,1e-8,1e-10,1e-12};
     vector<double> atol={1e-4,1e-6,1e-8,1e-10,1e-12,1e-14};
     cout << "     n    Ntot  rtol     atol     rtol |I(f)| + atol         |I(f)-R(f)|\n";
     cout << "  -----------------------------------------------------------------------------\n";
-    for(int i=0;i<rtol.size();i++)
+    for(int i=0;i<rtol.size();i++)//iteration over tolerances
     {
         adaptive_int(f, a, b, rtol[i], atol[i], R, n, Ntot);
-       printf("   %4i  %4i  %7.1e  %7.1e  %21.16e  %23.16e\n", n,Ntot,rtol[i], atol[i],rtol[i]*fabs(Itrue)+atol[i],fabs(Itrue-R));
+       printf("   %4i  %4i  %7.1e  %7.1e  %21.16e  %23.16e\n", n,Ntot,rtol[i], atol[i],rtol[i]*fabs(Itrue)+atol[i],fabs(Itrue-R));//print data
     }
     
 }

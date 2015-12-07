@@ -16,7 +16,7 @@
 
 using namespace std;
 
-// function prototypes
+// function prototype
 double composite_int(Fcn& f, const double a,
                         const double b, const int n);
 
@@ -33,7 +33,7 @@ public:
 };
 
 
-// This routine tests the Gauss-5 method on a simple integral
+
 int main(int argc, char* argv[]) {
     
     // limits of integration
@@ -50,15 +50,15 @@ int main(int argc, char* argv[]) {
     printf("\n True Integral = %22.16e\n", Itrue);
     
     
-    // test the Gauss-2 rule
+    // test the Gauss-5 rule
     cout << "\n Gauss-5 approximation:\n";
     cout << "     n             R(f)            relerr    conv rate\n";
     cout << "  ---------------------------------------------------\n";
-    vector<int> n = {1,2,4,8,16,32,64,128};
+    vector<int> n = {10,20,30,40,50,60,70,80};
     vector<double> errors(n.size());
     vector<double> hvals(n.size());
     
-    // iterate over n values, computing approximations, error, convergence rate
+    // iterate over n values, computing approximations, error, and convergence rate and print out data
     double Iapprox;
     for (int i=0; i<n.size(); i++) {
         

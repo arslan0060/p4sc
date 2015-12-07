@@ -52,10 +52,10 @@ double composite_int(Fcn& f, const double a, const double b, const int n)
         node4 = xmid + 0.5*h*x4;
         node5 = xmid + 0.5*h*x5;
         
-        // add Gauss2 approximation on this subinterval to result
+        // add Gauss5 approximation on this subinterval to result
         F += w1*f(node1) + w2*f(node2)+w3*f(node3)+w4*f(node4)+w5*f(node5);
         
-    } // end loop
+    }
 
 return (0.5*h*F);    
 
